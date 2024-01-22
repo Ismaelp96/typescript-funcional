@@ -8,7 +8,7 @@ interface EstadoAplicacao {
   tarefaSeleciona: Tarefa | null;
 }
 
-let estado: EstadoAplicacao = {
+let estadoInicial: EstadoAplicacao = {
   Tarefas: [
     {
       descricao: 'Tarefa concluída',
@@ -24,4 +24,14 @@ let estado: EstadoAplicacao = {
     },
   ],
   tarefaSeleciona: null,
+};
+
+const selecionarTarefa = (
+  estado: EstadoAplicacao,
+  tarefa: Tarefa
+): EstadoAplicacao => {
+  return {
+    ...estado,
+    tarefaSeleciona: tarefa === estado.tarefaSeleciona ? null : tarefa,
+  };
 };
