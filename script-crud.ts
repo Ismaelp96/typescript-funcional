@@ -4,12 +4,12 @@ interface Tarefa {
 }
 
 interface EstadoAplicacao {
-  Tarefas: Tarefa[];
+  tarefas: Tarefa[];
   tarefaSeleciona: Tarefa | null;
 }
 
 let estadoInicial: EstadoAplicacao = {
-  Tarefas: [
+  tarefas: [
     {
       descricao: 'Tarefa concluída',
       concluida: true,
@@ -34,4 +34,13 @@ const selecionarTarefa = (
     ...estado,
     tarefaSeleciona: tarefa === estado.tarefaSeleciona ? null : tarefa,
   };
+};
+
+const atualizarUI = () => {
+  const ulTarefas = document.querySelector('.app__section-task-list');
+  if (ulTarefas) {
+    ulTarefas.innerHTML = '';
+  }
+
+  estadoInicial.tarefas.forEach((tarefa) => {});
 };
